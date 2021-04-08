@@ -88,8 +88,13 @@ export default {
   },
 
   methods: {
-    async send (/* data */) {
-      // console.log('☝️: send -> data', data)
+    async send (data) {
+      const response = await fetch({
+        url: '/.netlify/functions/contact',
+        method: 'POST',
+        body: data
+      })
+      console.log('☝️ ~ file: ContactForm.vue ~ line 96 ~ send ~ response', response)
     }
   }
 }
