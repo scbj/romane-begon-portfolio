@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer'
 const EMAIL_PROVIDER = 'gmail'
 const EMAIL_USERNAME = process.env.EMAIL_USERNAME
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD
+const EMAIL_TO = process.env.EMAIL_TO
 
 export async function handler (event, context) {
   // Enable async handler
@@ -20,7 +21,7 @@ export async function handler (event, context) {
 
   const info = await transporter.sendMail({
     from: 'Formulaire de contact - romanebegon.com',
-    to: 'sacha.bejaud31@gmail.com',
+    to: EMAIL_TO,
     subject: 'Nouvelle demande de contact depuis romanebegon.com !',
     text: body
   })
