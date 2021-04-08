@@ -19,7 +19,7 @@ export async function handler (event, context) {
   const { body } = event
 
   const info = await transporter.sendMail({
-    from: EMAIL_USERNAME,
+    from: 'Formulaire de contact - romanebegon.com',
     to: 'sacha.bejaud31@gmail.com',
     subject: 'Nouvelle demande de contact depuis romanebegon.com !',
     text: body
