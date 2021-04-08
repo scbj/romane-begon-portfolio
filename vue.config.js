@@ -4,6 +4,14 @@ const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Mode = require('frontmatter-markdown-loader/mode')
 
 const configuration = {
+  devServer: {
+    proxy: {
+      '/.netlify': {
+        target: 'http://localhost:9000',
+        pathRewrite: { '^/.netlify/functions': '' }
+      }
+    }
+  },
   chainWebpack: config => {
     config.module
       .rule('markdown')

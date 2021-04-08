@@ -22,3 +22,5 @@ yarn-error.log*
 
 # Public photos (big files)
 /public/photos
+
+/functions
