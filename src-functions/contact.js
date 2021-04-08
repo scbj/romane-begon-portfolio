@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer'
 
 const EMAIL_PROVIDER = 'gmail'
-const EMAIL_USERNAME = 'romanebegon.com.contact@gmail.com'
-const EMAIL_PASSWORD = 'sMc!dp&skNKoe!5Te4YFq74$M5bkq5BMMDBsg#hY'
+const EMAIL_USERNAME = process.env.EMAIL_USERNAME
+const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD
 
 export async function handler (event, context) {
   // Enable async handler
