@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { dispatch } from 'vuex-pathify'
+
 import CopyrightStatement from '@/components/CopyrightStatement'
 import BaseList from '@/components/base/BaseList'
 import SocialLinks from '@/components/SocialLinks'
@@ -43,10 +45,15 @@ export default {
 
   methods: {
     onLinkClick (link) {
-      this.$store.dispatch('ui/closeMenu')
-      setTimeout(() => {
-        this.$router.push(link.route)
-      }, 840)
+      dispatch('ui/closeMenu')
+
+      if (link.route) {
+        setTimeout(() => {
+          this.$router.push(link.route)
+        }, 840)
+      } else if (link.action) {
+        dispatch(link.action)
+      }
     }
   }
 }

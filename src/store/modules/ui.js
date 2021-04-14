@@ -2,10 +2,11 @@ import { make } from 'vuex-pathify'
 
 const SET_IS_MENU_ACTIVE = 'SET_IS_MENU_ACTIVE'
 const SET_IS_VIEWER_ACTIVE = 'SET_IS_VIEWER_ACTIVE'
+const SET_IS_CONTACT_MODAL_OPENED = 'SET_IS_CONTACT_MODAL_OPENED'
 
 export const state = {
   isMenuActive: false,
-  isContactModalOpened: true,
+  isContactModalOpened: false,
   isViewerActive: false,
   homeScrollTop: 0,
   theme: {
@@ -19,12 +20,33 @@ export const actions = {
   openMenu ({ commit, dispatch }) {
     commit(SET_IS_MENU_ACTIVE, true)
     window.location = '#menu'
-    window.onhashchange = () => {
+
+    const onHashChange = () => {
       if (!window.location.hash) {
         dispatch('closeMenu')
-        // TODO: unsubscribe onhashchange
+        window.removeEventListener('hashchange', onHashChange)
       }
     }
+
+    window.addEventListener('hashchange', onHashChange)
+  },
+
+  openContactModal ({ commit, dispatch }) {
+    commit(SET_IS_CONTACT_MODAL_OPENED, true)
+    window.location = '#contact'
+
+    const onHashChange = () => {
+      if (!window.location.hash) {
+        dispatch('closeContactModal')
+        window.removeEventListener('hashchange', onHashChange)
+      }
+    }
+
+    window.addEventListener('hashchange', onHashChange)
+  },
+
+  closeContactModal ({ commit }) {
+    commit(SET_IS_CONTACT_MODAL_OPENED, false)
   },
 
   closeMenu ({ commit }) {
