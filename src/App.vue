@@ -41,7 +41,7 @@ export default {
   },
 
   computed: {
-    isContactModalOpened: get('ui/isContactModalOpened'),
+    isContactModalOpened: get('contact/isModalOpened'),
     isMenuActive: get('ui/isMenuActive'),
     isMenuTransitionRunning: sync('ui/isMenuTransitionRunning'),
     isViewerActive: get('ui/isViewerActive')

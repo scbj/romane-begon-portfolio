@@ -15,24 +15,23 @@
       class="contact-form-failed__button"
       color="black"
       :icon-scale="1"
-      text="FERMER"
+      text="RETOUR"
       @click="onButtonClick"
     />
   </div>
 </template>
 
 <script>
-import { dispatch } from 'vuex-pathify'
-
 import SocialLinks from '@/components/SocialLinks'
 
 export default {
   components: {
     SocialLinks
   },
+
   methods: {
     onButtonClick () {
-      dispatch('ui/closeContactModal')
+      this.$store.set('contact/formStatus', 'writing')
     }
   }
 }

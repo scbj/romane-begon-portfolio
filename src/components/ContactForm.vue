@@ -1,11 +1,11 @@
 <template>
   <div class="contact-form">
     <transition name="slide-up">
-      <ContactFormSuccess v-if="messageStatus === 'success'" />
-      <ContactFormFailed v-else-if="messageStatus === 'failed'" />
+      <ContactFormSuccess v-if="formStatus === 'success'" />
+      <ContactFormFailed v-else-if="formStatus === 'failed'" />
       <FormulateForm
         v-else
-        v-model="form"
+        v-model="formData"
         @submit="send"
       >
         <FormulateInput
@@ -68,12 +68,13 @@
 </template>
 
 <script>
+import { sync } from 'vuex-pathify'
+
 import ContactFormFailed from '@/components/ContactFormFailed'
 import ContactFormSuccess from '@/components/ContactFormSuccess'
 
 const MessageStatusSuccess = 'success'
 const MessageStatusFailed = 'failed'
-const MessageStatusWriting = 'writing'
 
 export default {
   components: {
@@ -81,14 +82,10 @@ export default {
     ContactFormSuccess
   },
 
-  data () {
-    return {
-      form: {},
-      messageStatus: MessageStatusWriting
-    }
-  },
-
   computed: {
+    formStatus: sync('contact/formStatus'),
+    formData: sync('contact/formData'),
+
     messageSubjetOptions () {
       return {
         wedding: 'Mariage',
@@ -111,14 +108,18 @@ export default {
 
   methods: {
     async send (data) {
-      const response = await fetch('/.netlify/functions/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      this.messageStatus = response.status === 200 ? MessageStatusSuccess : MessageStatusFailed
+      try {
+        const response = await fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+        this.formStatus = response.status === 200 ? MessageStatusSuccess : MessageStatusFailed
+      } catch (error) {
+        this.formStatus = MessageStatusFailed
+      }
     }
   }
 }
