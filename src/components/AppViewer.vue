@@ -4,9 +4,22 @@
       {{ activeIndex + 1 }} / {{ photos.length }}
     </div>
     <div class="app-viewer__carousel">
-      <img class="app-viewer__image" :src="image(activePhoto, 1280)">
+      <img
+        class="app-viewer__image"
+        :src="activePhoto"
+        @load="onLoad"
+      >
+      <transition name="fade">
+        <div v-if="!imageLoaded" class="app-viewer__loader">
+          Chargement..
+        </div>
+      </transition>
     </div>
-    <div class="app-viewer__thumbnails">
+    <div
+      ref="thumbnails"
+      class="app-viewer__thumbnails"
+      @wheel="onThumbnailsWheel"
+    >
       <img
         v-for="(photo, index) in photos"
         :key="index"
@@ -27,25 +40,33 @@
         @click="() => {}"
       />
     </div>
-    <div class="app-viewer__previous" @click="previous">
+    <div
+      v-show="canGoPrevious"
+      class="app-viewer__previous"
+      @click="previous"
+    >
       <ThemeStyle reactive>
         <BaseButton
           slot-scope="{ theme }"
           :color="theme['--text-color']"
           :style="theme"
         >
-          PREV
+          PRÉC.
         </BaseButton>
       </ThemeStyle>
     </div>
-    <div class="app-viewer__next" @click="next">
+    <div
+      v-show="canGoNext"
+      class="app-viewer__next"
+      @click="next"
+    >
       <ThemeStyle reactive>
         <BaseButton
           slot-scope="{ theme }"
           :color="theme['--text-color']"
           :style="theme"
         >
-          NEXT
+          SUIV.
         </BaseButton>
       </ThemeStyle>
     </div>
@@ -62,16 +83,41 @@ export default {
     ThemeStyle
   },
 
+  data () {
+    return {
+      imageLoaded: false
+    }
+  },
+
   computed: {
     activeIndex: get('viewer/activeIndex'),
     activePhoto: get('viewer/activePhoto'),
+    canGoPrevious: get('viewer/canGoPrevious'),
+    canGoNext: get('viewer/canGoNext'),
+    pending: get('viewer/pending'),
     photos: get('viewer/photos')
+  },
+
+  watch: {
+    pending (pending) {
+      this.imageLoaded = false
+    }
   },
 
   methods: {
     next: call('viewer/next'),
     previous: call('viewer/previous'),
     updateActive: call('viewer/updateActive'),
+
+    onLoad () {
+      this.imageLoaded = true
+    },
+
+    onThumbnailsWheel (event) {
+      const container = this.$refs.thumbnails
+      if (event.deltaY > 0) container.scrollLeft += 16
+      else container.scrollLeft -= 16
+    },
 
     image (src, dimension) {
       return `${src}/-/resize/${dimension}x/`
@@ -131,6 +177,20 @@ export default {
   object-fit: contain;
   height: 100%;
   width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.app-viewer__loader {
+  background: var(--color-dark-1);
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  z-index: 2;
 }
 
 .app-viewer__thumbnails {
@@ -198,6 +258,7 @@ export default {
   justify-content: end;
   gap: 0.556rem;
   margin-right: 68px;
+  display: none;
 
   .icon-sun,
   .icon-fullscreen {
@@ -205,5 +266,15 @@ export default {
     height: 20px;
     width: 20px;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s ease-out;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

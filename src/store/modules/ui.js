@@ -6,6 +6,7 @@ const SET_IS_VIEWER_ACTIVE = 'SET_IS_VIEWER_ACTIVE'
 export const state = {
   isMenuActive: false,
   isViewerActive: false,
+  homeScrollTop: 0,
   theme: {
     mode: 'dark'
   }
@@ -17,12 +18,15 @@ export const actions = {
   openMenu ({ commit, dispatch }) {
     commit(SET_IS_MENU_ACTIVE, true)
     window.location = '#menu'
-    window.onhashchange = () => {
+
+    const onHashChange = () => {
       if (!window.location.hash) {
         dispatch('closeMenu')
-        // TODO: unsubscribe onhashchange
+        window.removeEventListener('hashchange', onHashChange)
       }
     }
+
+    window.addEventListener('hashchange', onHashChange)
   },
 
   closeMenu ({ commit }) {

@@ -6,7 +6,7 @@
     </ParallaxLayer>
 
     <ParallaxLayer class="section-contact__content" depth="base">
-      <PrestationCounter :value="6" />
+      <SectionCounter :value="6" />
       <TextTitle
         ref="title"
         class="text-charming"
@@ -22,23 +22,25 @@
       </TextParagraph>
       <BaseButton
         class="section-contact__contact-button"
-        :route="{ name: 'contact' }"
         color="white"
         icon="play"
         :icon-scale="0.622"
         text="ÉCRIVONS-NOUS"
         @mouseenter.native="onContactButtonEnter"
+        @click="onContactButtonClick"
       />
     </ParallaxLayer>
   </ParallaxGroup>
 </template>
 
 <script>
+import { dispatch } from 'vuex-pathify'
+
 import TextCharming from '@/animations/TextCharming'
 
 import ParallaxGroup from '@/components/parallax/ParallaxGroup'
 import ParallaxLayer from '@/components/parallax/ParallaxLayer'
-import PrestationCounter from '@/components/PrestationCounter'
+import SectionCounter from '@/components/SectionCounter'
 import TextParagraph from '@/components/TextParagraph'
 import TextTitle from '@/components/TextTitle'
 
@@ -48,7 +50,7 @@ export default {
   components: {
     ParallaxGroup,
     ParallaxLayer,
-    PrestationCounter,
+    SectionCounter,
     TextParagraph,
     TextTitle
   },
@@ -86,6 +88,10 @@ export default {
   },
 
   methods: {
+    onContactButtonClick () {
+      dispatch('ui/openContactModal')
+    },
+
     onContactButtonEnter () {
       this.titleEffect.charm()
     }
