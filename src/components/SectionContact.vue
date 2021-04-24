@@ -22,18 +22,20 @@
       </TextParagraph>
       <BaseButton
         class="section-contact__contact-button"
-        :route="{ name: 'contact' }"
         color="white"
         icon="play"
         :icon-scale="0.622"
         text="ÉCRIVONS-NOUS"
         @mouseenter.native="onContactButtonEnter"
+        @click="onContactButtonClick"
       />
     </ParallaxLayer>
   </ParallaxGroup>
 </template>
 
 <script>
+import { dispatch } from 'vuex-pathify'
+
 import TextCharming from '@/animations/TextCharming'
 
 import ParallaxGroup from '@/components/parallax/ParallaxGroup'
@@ -86,6 +88,10 @@ export default {
   },
 
   methods: {
+    onContactButtonClick () {
+      dispatch('ui/openContactModal')
+    },
+
     onContactButtonEnter () {
       this.titleEffect.charm()
     }
