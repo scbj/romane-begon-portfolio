@@ -89,7 +89,7 @@ export default {
 
   methods: {
     onContactButtonClick () {
-      dispatch('ui/openContactModal')
+      dispatch('contact/openModal')
     },
 
     onContactButtonEnter () {

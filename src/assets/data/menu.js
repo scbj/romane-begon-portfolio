@@ -14,7 +14,7 @@ export const navigationLinks = [
   },
   {
     label: 'Contact',
-    action: 'ui/openContactModal'
+    action: 'contact/openModal'
   },
   {
     label: 'A propos',

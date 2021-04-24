@@ -22,7 +22,7 @@ import { dispatch } from 'vuex-pathify'
 export default {
   methods: {
     onButtonClick () {
-      dispatch('ui/closeContactModal')
+      dispatch('contact/closeModal')
     }
   }
 }

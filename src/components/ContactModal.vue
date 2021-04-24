@@ -20,7 +20,7 @@ export default {
 
   methods: {
     close () {
-      dispatch('ui/closeContactModal')
+      dispatch('contact/closeModal')
     }
   }
 }
