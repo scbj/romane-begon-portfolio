@@ -45,7 +45,9 @@ export default {
 
   methods: {
     onLinkClick (link) {
-      dispatch('ui/closeMenu')
+      if (link.isModal !== true) {
+        dispatch('ui/closeMenu')
+      }
 
       if (link.route) {
         setTimeout(() => {
