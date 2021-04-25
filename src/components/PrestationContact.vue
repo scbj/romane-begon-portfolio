@@ -6,16 +6,16 @@
     <TextTitle class="prestation-contact__subtitle" small>
       Les réservations sont ouvertes !
     </TextTitle>
-    <FormulateForm
-      v-model="form"
-      class="prestation-contact__form"
-      :schema="formSchemaByStep"
-      @submit="onSubmit"
-    />
+    <img class="prestation-contact__illustration" :src="illustrationSrc">
+    <button class="prestation-contact__contact-button" @click="onContactButtonClick">
+      Écrivons-nous
+    </button>
   </div>
 </template>
 
 <script>
+import { dispatch } from 'vuex-pathify'
+
 import TextTitle from '@/components/TextTitle'
 
 export default {
@@ -45,6 +45,10 @@ export default {
         professionnel: 'Professionel',
         other: 'Autre'
       }
+    },
+
+    illustrationSrc () {
+      return require('@/assets/images/agenda.png')
     },
 
     whereComesFromOptions () {
@@ -138,6 +142,9 @@ export default {
   },
 
   methods: {
+    onContactButtonClick () {
+      dispatch('contact/openModal')
+    },
     onSubmit (payload) {
       const lastStep = 6
       if (this.step === lastStep) {
@@ -153,14 +160,81 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/_vars.scss';
+
 .prestation-contact {
-  background: linear-gradient(180deg, rgba(255,255,255,1) 10%, rgba(255,255,255,0) 80%), bottom / 100% no-repeat var(--background-image);
-  height: 1000px;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'title'
+    'subtitle'
+    'img'
+    'button';
+
+  @media screen and (min-width: $large) {
+    max-width: 50rem;
+    margin: auto;
+    gap: 0 1em;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr repeat(3, auto) 1fr;
+    grid-template-areas:
+      'img .'
+      'img title'
+      'img subtitle'
+      'img button'
+      'img .';
+  }
 }
 
 .prestation-contact__title,
 .prestation-contact__subtitle {
   text-align: center;
+}
+
+.prestation-contact__title {
+  grid-area: title;
+}
+
+.prestation-contact__subtitle {
+  grid-area: subtitle;
+}
+
+.prestation-contact__illustration {
+  grid-area: img;
+  display: block;
+  margin: 2rem auto;
+  height: 17rem;
+
+  @media screen and (min-width: $medium) {
+    height: 20rem;
+  }
+
+  @media screen and (min-width: $large) {
+    height: 22rem;
+  }
+
+  @media screen and (min-width: $extraLarge) {
+    height: 26rem;
+  }
+}
+
+.prestation-contact__contact-button {
+  grid-area: button;
+  align-self: center;
+  justify-self: center;
+  padding: 0.7em 1.8em;
+  background: #110703;
+  color: white;
+  font-weight: 600;
+  font-size: 1.3rem;
+  border-radius: 0.14em;
+  font-family: "Orpheus Pro", serif;
+
+  @media screen and (min-width: $large) {
+    margin-top: 2rem;
+  }
 }
 
 .prestation-contact__form {

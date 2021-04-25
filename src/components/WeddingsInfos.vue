@@ -20,7 +20,17 @@
       <template
         v-for="(step, index) in flowSteps"
       >
-        <div :key="`a-${index}`" class="weddings-infos__flow-step-illustration" />
+        <img
+          v-if="step.image"
+          :key="`a-${index}`"
+          :src="step.image"
+          class="weddings-infos__flow-step-illustration"
+        >
+        <div
+          v-else
+          :key="`a-${index}`"
+          class="weddings-infos__flow-step-illustration weddings-infos__flow-step-illustration--placeholder"
+        />
         <div :key="`b-${index}`" class="weddings-infos__flow-step-dot" />
         <div :key="`c-${index}`" class="weddings-infos__flow-step-content">
           <h3>{{ step.title }}</h3>
@@ -53,20 +63,22 @@ export default {
       return [
         {
           title: '1. La rencontre',
-          image: '',
+          image: require('@/assets/images/rencontre.png'),
           content: 'Il est essentiel pour moi de venir à votre rencontrer et de prendre le temps de vous découvrir autour d’un verre. Un moment d’échanges important qui me permettra de connaitre vos attentes, de découvrir votre histoire mais aussi de vous présenter mon travail. Ce moment offert ne vous engage en rien,alors n’hésitez pas à me contacter pour organiser notre rencontre !'
         },
         {
           title: '2. Jour -1',
-          image: '',
+          image: require('@/assets/images/jour-1.png'),
           content: 'Il m’arrive de venir la veille pour découvrir les lieux, m’imprégner de l’ambiance et discuter avec vous des meilleurs spots où faire les photos de groupe et de couple. C’est aussi profiter du calme avant l’effervescence pour vous donner le meilleur de moi-même le jour J.'
         },
         {
           title: '3. Le jour J',
+          image: require('@/assets/images/alliances.png'),
           content: 'Le grand jour est enfin arrivé. Le stress, l’impatience et l’émotion s’entremêlent dès le début de la journée, de quoi créer des instants que je ne manquerai pas de saisir. J’aime prendre le temps de photographier et mettre en scène les éléments qui font que cette journée est exceptionnelle comme la décoration, les alliances, les accessoires des mariés ou encore la papeterie.\n\nLes préparatifs des mariés est un instant chargé en émotions où je laisse parler votre spontanéité pour immortaliser toute la magie de ce moment. J’aime photographier la douceur d’un geste, l’émotion sur un visage, la joie dans un sourire et la complicité qui vous lie aux personnes qui vous entoure. Il peut arriver que je vous guide pour bénéficier de la beauté de la lumière ou d’un cadre en particulier tout en laissant libre court à vos émotions.\n\nLa cérémonie civile, laïque ou religieuse est un moment très émouvant où j’adore saisir toutes les subtilités de ce moment magique. Vos sourires, celui de vos proches, les échanges d’alliances, un enfant qui fait doucement glousser l’assemblée, l’explosion de bonheur à votre sortie… Tous ces petits détails qui marquent seront à jamais immortalisé.\n\nÇa y est, vous vous êtes enfin dit oui. Il est grand temps de vous détendre et de profiter de vos proches autour d’un verre pendant le cocktail. Un moment propice aux sourires, aux embrassades et aux éclats de rire que je ne manquerai pas de vous retransmettre grâce à mes clichés. Vos invités ne remarqueront même pas que j’ai saisi cet instant où leur spontanéité et leur naturel les rends si beau. C’est aussi le moment du traditionnel jeté de bouquet, mais qui aura l’honneur de l’attraper ?\n\nIl est venu le temps de la photo de groupe où amis d’enfance, parents ou cousins venus de loin se réunissent autour de vous. C’est un moment où l’effervescence et la joie d’être ensemble reprennent de plus belle. Créons tous ensemble une photo mémorable qu’elle soit sérieuse ou décalée pour graver à jamais ce jour spécial. Vos proches seront fiers d’afficher chez eux ce beau souvenir.\n\nLa séance photo en couple est une parenthèse où le temps s’arrête pour vous laisser souffler, vous retrouver et laisser parler votre tendresse. Un moment essentiel où je prendrai le temps de vous mettre à l’aise, de vous guider ou de vous laisser évoluer pour saisir ces petits instants d’émotions. J’affectionne particulièrement saisir la beauté de votre complicité à la lumière d’un coucher de soleil.\n\nLe repas et la soirée laissent place à la convivialité, aux discours poignants de vos témoins, aux embrassades et à la fête. Je serai encore là, au milieu de cette ébullition, pour immortaliser des instants précieux et des scènes marquantes comme l’arrivée du gâteau ou votre danse d’ouverture de bal durement travaillée. Ces moments magiques et plein de spontanéités ne n’échapperont pas à mon œil !'
         },
         {
           title: '4. Le lendemain',
+          image: require('@/assets/images/lendemain.png'),
           content: 'La fête fût belle et c’est le moment de vous réunir pour un dernier instant de convivialité autour d’un repas ou d’un brunch. L’occasion idéale pour échanger vos impressions, relâcher, rire et raconter les meilleures anecdotes de cette journée passée. Un beau moment que j’aime partager avec vous tout en faisant quelques photos. Il est temps pour moi de rentrer en emportant tous ces jolis souvenirs que je vous restituerai une fois sublimés. Après quelques jours de tri, de traitements et de retouche, je vous donnerai accès à une belle galerie protégée par un mot de passe. Vous aurez la possibilité d’admirer toutes vos photos, de les télécharger en différents formats (HD, web), de donner l’accès à vos proches, de mettre en privé les photos que vous ne souhaitez pas partager mais aussi de faire des listes de photos favorites et prévoir des tirages.'
         }
       ]
@@ -142,13 +154,21 @@ h3 {
 
 p {
   font-family: 'TT Commons', sans-serif;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 1.8125em;
   margin-top: initial;
   margin: 20px 0 40px 0;
   max-width: initial;
+
+  @media screen and (min-width: $large) {
+    font-size: 1.2rem;
+  }
+
+  @media screen and (min-width: $extraLarge) {
+    font-size: 1.1rem;
+  }
 }
 
 blockquote {
@@ -192,6 +212,7 @@ blockquote {
   flex: 1;
   min-width: 20rem;
   margin: 1rem;
+  margin-right: 2rem;;
 }
 
 .weddings-infos__hero-gallery {
@@ -224,15 +245,20 @@ blockquote {
   @media screen and (min-width: $large) {
     h3 {
       text-align: left;
+      display: inline-block;
     }
   }
 }
 
 .weddings-infos__flow-step-illustration {
-  background: rgba(black, 0.1);
+  $size: 12rem;
   justify-self: center;
-  height: 6rem;
-  width: 6rem;
+  height: $size;
+  width: $size;
+
+  &--placeholder {
+    background: rgba(black, 0.1);
+  }
 }
 
 .weddings-infos__flow-step-dot {
@@ -244,6 +270,9 @@ blockquote {
 
   @media screen and (min-width: $large) {
     display: block;
+
+    // TODO: Hiding since not integrate
+    opacity: 0;
   }
 }
 
