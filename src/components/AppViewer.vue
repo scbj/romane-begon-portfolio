@@ -10,7 +10,7 @@
         @load="onLoad"
       >
       <transition name="fade">
-        <div v-if="!imageLoaded" class="app-viewer__loader">
+        <div v-show="!imageLoaded" class="app-viewer__loader">
           Chargement..
         </div>
       </transition>
