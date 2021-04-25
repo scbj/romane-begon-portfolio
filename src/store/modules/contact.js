@@ -17,7 +17,7 @@ export const actions = {
 
     const onHashChange = () => {
       if (!window.location.hash) {
-        dispatch('closeContactModal')
+        dispatch('closeModal')
         window.removeEventListener('hashchange', onHashChange)
       }
     }
