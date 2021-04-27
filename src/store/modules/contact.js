@@ -26,6 +26,7 @@ export const actions = {
   },
 
   closeModal ({ commit }) {
+    window.location = '#'
     commit(SET_IS_MODAL_OPENED, false)
   }
 }
