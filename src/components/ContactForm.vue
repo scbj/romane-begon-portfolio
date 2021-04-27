@@ -56,6 +56,7 @@
           label="Décrivez-votre projet en quelques lignes"
           validation="bail|required|min:50|max:600"
           validation-name="Ce champ"
+          rows="10"
         />
         <FormulateInput
           class="contact-form__button"
