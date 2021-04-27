@@ -161,6 +161,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_vars.scss';
+@import '@/assets/styles/_mixins.scss';
 
 .prestation-contact {
   padding-bottom: 4rem;
@@ -224,13 +225,7 @@ export default {
   grid-area: button;
   align-self: center;
   justify-self: center;
-  padding: 0.7em 1.8em;
-  background: #110703;
-  color: white;
-  font-weight: 600;
-  font-size: 1.3rem;
-  border-radius: 0.14em;
-  font-family: "Orpheus Pro", serif;
+  @include button-black;
 
   @media screen and (min-width: $large) {
     margin-top: 2rem;

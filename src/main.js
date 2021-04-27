@@ -8,7 +8,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '@/assets/icons'
-import '../node_modules/@braid/vue-formulate/themes/snow/snow.scss'
+import '@/assets/styles/vue-formulate.scss'
 
 Vue.config.productionTip = false
 

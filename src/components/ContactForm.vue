@@ -131,5 +131,20 @@ export default {
   height: 100%;
   overflow-y: auto;
   position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    height: 3rem;
+    width: 100%;
+  }
+}
+
+.contact-form__button {
+  &[data-classification='button'] {
+    button {
+      background: red!important;
+    }
+  }
 }
 </style>
