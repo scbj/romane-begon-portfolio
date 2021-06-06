@@ -1,3 +1,5 @@
+image: node:latest
+
 stages:
   - setup
   - build
@@ -5,12 +7,15 @@ stages:
 
 cache:
   paths:
-  - node_modules/
+    - node_modules/
 
 job:setup:
   stage: setup
   script:
     - yarn ci
+  artifacts:
+    paths:
+      - node_modules/
 
 job:build:
   stage: build
