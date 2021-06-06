@@ -1,0 +1,40 @@
+image: buildkite/puppeteer:latest
+
+stages:
+  - setup
+  - build
+  - deploy
+
+cache:
+  paths:
+    - .yarn
+    - node_modules/
+
+job:setup:
+  stage: setup
+  script:
+    - yarn install --cache-folder .yarn
+  artifacts:
+    paths:
+      - .yarn
+      - node_modules/
+
+job:build:
+  stage: build
+  script:
+    - yarn build
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 1 week
+
+job:deploy:
+  stage: deploy
+  script:
+    - yarn global add netlify-cli
+    - netlify deploy -b ${CI_COMMIT_REF_SLUG} --site ${NETLIFY_SITE_ID} --auth ${NETLIFY_AUTH_TOKEN}
+  environment:
+    name: staging/${CI_COMMIT_REF_SLUG}
+    url: https://${CI_COMMIT_REF_SLUG}--romanebegon.netlify.app/
+  except:
+    - master

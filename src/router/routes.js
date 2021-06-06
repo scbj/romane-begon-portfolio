@@ -1,6 +1,5 @@
-import slugify from 'slugify'
-
 import { prestations } from '@/assets/data/home.json'
+import slugify from 'slugify'
 
 const routes = [
   {
@@ -17,11 +16,6 @@ const routes = [
     path: '/a-propos',
     name: 'about',
     component: () => import('@/views/About.vue')
-  },
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('@/views/Contact.vue')
   },
   {
     path: '/:prestation',

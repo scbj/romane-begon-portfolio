@@ -23,6 +23,9 @@ export default {
     PrestationContact
   },
 
+  beforeRouteUpdate: routeGuard,
+  beforeRouteEnter: routeGuard,
+
   data () {
     return {
       content2: null,
@@ -44,9 +47,6 @@ export default {
         this.content2 = await famillesCouples()
         break
     }
-  },
-
-  beforeRouteUpdate: routeGuard,
-  beforeRouteEnter: routeGuard
+  }
 }
 </script>

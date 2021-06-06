@@ -39,14 +39,17 @@ if (process.env.NODE_ENV === 'production') {
           '/',
           '/espace-client',
           '/a-propos',
-          '/contact',
           '/mariages',
           '/mariages/galerie',
           '/portraits',
           '/portraits/galerie',
           '/familles-couples',
           '/familles-couples/galerie'
-        ]
+        ],
+        renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
+          headless: true,
+          maxConcurrentRoutes: 1
+        })
       })
     ]
   }

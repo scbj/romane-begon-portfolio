@@ -53,6 +53,9 @@ const columnPropertiesMap = [
 export default {
   mixins: [responsive],
 
+  beforeRouteUpdate: routeGuard,
+  beforeRouteEnter: routeGuard,
+
   data () {
     return {
       photos: []
@@ -108,10 +111,7 @@ export default {
         photos: this.photos
       })
     }
-  },
-
-  beforeRouteUpdate: routeGuard,
-  beforeRouteEnter: routeGuard
+  }
 }
 </script>
 
