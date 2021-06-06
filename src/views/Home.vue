@@ -37,6 +37,12 @@ export default {
     SectionStartup
   },
 
+  beforeRouteLeave (to, from, next) {
+    const scrollableContainer = document.querySelector('.parallax-container')
+    this.$store.set('ui/homeScrollTop', scrollableContainer.scrollTop)
+    next()
+  },
+
   data () {
     return {
       isReady: false
@@ -56,12 +62,6 @@ export default {
   //     }
   //   }
   // },
-
-  beforeRouteLeave (to, from, next) {
-    const scrollableContainer = document.querySelector('.parallax-container')
-    this.$store.set('ui/homeScrollTop', scrollableContainer.scrollTop)
-    next()
-  },
 
   methods: {
     onHashChange () {

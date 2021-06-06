@@ -50,16 +50,16 @@ export default {
     ThemeStyle
   },
 
+  beforeRouteUpdate: routeGuard,
+  beforeRouteEnter: routeGuard,
+
   computed: {
     themeMode: get('ui/theme@mode'),
 
     backgroundColor () {
       return this.themeMode === 'dark' ? '#0e0e0e' : 'white'
     }
-  },
-
-  beforeRouteUpdate: routeGuard,
-  beforeRouteEnter: routeGuard
+  }
 }
 </script>
 
