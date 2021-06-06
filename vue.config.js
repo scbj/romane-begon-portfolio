@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
         routes: [
           '/',
           '/espace-client',
-          '/a-propos',
+          // '/a-propos',
           '/contact',
           '/mariages',
           '/mariages/galerie',
