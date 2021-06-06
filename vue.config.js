@@ -47,7 +47,9 @@ if (process.env.NODE_ENV === 'production') {
           '/familles-couples/galerie'
         ],
         renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
-          maxConcurrentRoutes: 2
+          headless: true,
+          maxConcurrentRoutes: 1,
+          renderAfterDocumentEvent: 'render-event'
         })
       })
     ]
