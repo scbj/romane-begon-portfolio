@@ -48,8 +48,7 @@ if (process.env.NODE_ENV === 'production') {
         ],
         renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
           headless: true,
-          maxConcurrentRoutes: 1,
-          renderAfterDocumentEvent: 'render-event'
+          maxConcurrentRoutes: 1
         })
       })
     ]
