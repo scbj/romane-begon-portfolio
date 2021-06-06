@@ -40,7 +40,6 @@
 
 <script>
 import { sync } from 'vuex-pathify'
-import { throttle } from '@bit/scbj.utils.throttle'
 
 import ParallaxContainer from '@/components/parallax/ParallaxContainer'
 import HomeProgressBar from '@/components/HomeProgressBar'
@@ -49,6 +48,7 @@ import ThemeStyle from '@/components/ThemeStyle'
 import WebsiteTitle from '@/components/WebsiteTitle'
 
 import responsive from '@/mixins/responsive'
+import { throttle } from '@/utils/throttle'
 
 export default {
   components: {
