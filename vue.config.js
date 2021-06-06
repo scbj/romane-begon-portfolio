@@ -38,15 +38,17 @@ if (process.env.NODE_ENV === 'production') {
         routes: [
           '/',
           '/espace-client',
-          // '/a-propos',
-          '/contact',
+          '/a-propos',
           '/mariages',
           '/mariages/galerie',
           '/portraits',
           '/portraits/galerie',
           '/familles-couples',
           '/familles-couples/galerie'
-        ]
+        ],
+        renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
+          maxConcurrentRoutes: 2
+        })
       })
     ]
   }
