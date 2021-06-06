@@ -31,6 +31,10 @@ job:build:
 job:deploy:
   stage: deploy
   script:
+    - yarn global add netlify-cli
     - netlify deploy -b $CI_COMMIT_REF_SLUG --site $NETLIFY_SITE_ID --auth $NETLIFY_AUTH_TOKEN
+  environment:
+    name: staging/${CI_COMMIT_REF_SLUG}
+    url: https://${CI_COMMIT_REF_SLUG}--romanebegon.netlify.app/
   except:
     - master
