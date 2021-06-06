@@ -13,10 +13,9 @@ cache:
 job:setup:
   stage: setup
   script:
-    - yarn install --cache-folder .yarn
+    - yarn
   artifacts:
     paths:
-      - .yarn
       - node_modules/
 
 job:build:
