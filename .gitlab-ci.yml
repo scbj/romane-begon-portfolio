@@ -7,14 +7,16 @@ stages:
 
 cache:
   paths:
+    - .yarn
     - node_modules/
 
 job:setup:
   stage: setup
   script:
-    - yarn ci
+    - yarn install --cache-folder .yarn
   artifacts:
     paths:
+      - .yarn
       - node_modules/
 
 job:build:
