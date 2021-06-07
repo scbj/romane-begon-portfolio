@@ -9,9 +9,8 @@ cache:
   paths:
     - .yarn
     - node_modules/
-
-before_script:
-    - export URL_SLUG=$(echo "$CI_COMMIT_REF_SLUG" | cut -c 1-35)
+variables:
+  URL_SLUG: $(echo "$CI_COMMIT_REF_SLUG" | cut -c 1-35)
 
 job:setup:
   stage: setup
@@ -35,7 +34,7 @@ job:deploy:
   stage: deploy
   script:
     - yarn global add netlify-cli
-    - netlify deploy -b ${URL_SLUG} --site ${NETLIFY_SITE_ID} --auth ${NETLIFY_AUTH_TOKEN}
+    - netlify deploy --alias ${URL_SLUG} --site ${NETLIFY_SITE_ID} --auth ${NETLIFY_AUTH_TOKEN}
   environment:
     name: staging/${URL_SLUG}
     url: https://${URL_SLUG}--romanebegon.netlify.app/
