@@ -11,6 +11,7 @@ import store from '@/store'
 import '@/assets/styles/markdown.scss'
 
 import PrestationContact from '@/components/PrestationContact'
+import FamiliesCouples from '@/components/FamiliesCouples'
 import WeddingsInfos from '@/components/WeddingsInfos'
 
 function routeGuard (to, from, next) {
@@ -35,7 +36,6 @@ export default {
 
   async mounted () {
     const portraits = () => import('@/assets/data/prestations/portraits.md')
-    const famillesCouples = () => import('@/assets/data/prestations/familles-couples.md')
     switch (this.$route.params.prestation) {
       case 'mariages':
         this.content3 = WeddingsInfos
@@ -44,7 +44,7 @@ export default {
         this.content2 = await portraits()
         break
       case 'familles-couples':
-        this.content2 = await famillesCouples()
+        this.content3 = FamiliesCouples
         break
     }
   }
