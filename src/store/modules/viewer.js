@@ -1,12 +1,13 @@
-import { make } from 'vuex-pathify'
-
 import { preload } from '@/utils/image'
+import { make } from 'vuex-pathify'
 
 export const state = {
   activePhoto: '',
   activeIndex: 0,
+  isActive: false,
   pending: false,
-  photos: []
+  photos: [],
+  savedTheme: null
 }
 
 export const getters = {
@@ -22,16 +23,23 @@ export const getters = {
 export const mutations = make.mutations(state)
 
 export const actions = {
-  open ({ commit, dispatch }, { photos, activePhoto }) {
+  open ({ commit, dispatch, rootState }, { photos, activePhoto }) {
+    commit('SET_SAVED_THEME', rootState.ui.theme)
+    commit('ui/SET_THEME', { mode: 'dark' }, { root: true })
     commit('SET_PHOTOS', photos)
-    commit('ui/SET_IS_VIEWER_ACTIVE', true, { root: true })
+    commit('SET_IS_ACTIVE', true)
     dispatch('updateActive', activePhoto)
     window.location = '#visualiseur'
     window.onhashchange = () => {
       if (!window.location.hash) {
-        commit('ui/SET_IS_VIEWER_ACTIVE', false, { root: true })
+        commit('SET_IS_ACTIVE', false)
       }
     }
+  },
+
+  close ({ commit, state }) {
+    commit('ui/SET_THEME', state.savedTheme, { root: true })
+    commit('SET_IS_ACTIVE', false)
   },
 
   async updateActive ({ commit, state }, payload) {

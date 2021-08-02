@@ -44,7 +44,7 @@ export default {
     isContactModalOpened: get('contact/isModalOpened'),
     isMenuActive: get('ui/isMenuActive'),
     isMenuTransitionRunning: sync('ui/isMenuTransitionRunning'),
-    isViewerActive: get('ui/isViewerActive')
+    isViewerActive: get('viewer/isActive')
   },
 
   mounted () {

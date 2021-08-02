@@ -13,7 +13,11 @@
             propre. L’émotion, l’amour, la douceur et la sensualité sont cœur de mon travail.
           </p>
         </div>
-        <div class="weddings-infos__hero-gallery" />
+        <div
+          class="weddings-infos__hero-gallery"
+          :style="{backgroundImage: heroGalleryPhoto}"
+          @click="onHeroGalleryClick"
+        />
       </div>
     </section>
     <section class="weddings-infos__flow">
@@ -90,6 +94,10 @@ export default {
       ]
     },
 
+    heroGalleryPhoto () {
+      return 'url(https://ucarecdn.com/9d080d65-35d1-4598-b308-855bf3da0ff4/-/resize/400x/)'
+    },
+
     plans () {
       return [
         {
@@ -138,6 +146,12 @@ export default {
           ]
         }
       ]
+    }
+  },
+
+  methods: {
+    onHeroGalleryClick () {
+      this.$router.push('galerie')
     }
   }
 }
@@ -252,10 +266,14 @@ blockquote {
 }
 
 .weddings-infos__hero-gallery {
+  border-radius: 0.222rem;
   background: rgba(black, 0.1);
+  background-size: cover;
+  background-repeat: no-repeat;
   flex: 0 1 400px;
   height: 400px;
   width: 400px;
+  cursor: pointer;
 }
 
 .weddings-infos__flow {

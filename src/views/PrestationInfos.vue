@@ -15,7 +15,8 @@ import FamiliesCouples from '@/components/FamiliesCouples'
 import WeddingsInfos from '@/components/WeddingsInfos'
 
 function routeGuard (to, from, next) {
-  store.set('ui/theme@mode', 'light')
+  if (to.hash !== '#visualiseur') store.set('ui/theme@mode', 'light')
+
   return next()
 }
 
