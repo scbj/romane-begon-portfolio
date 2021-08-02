@@ -25,7 +25,7 @@ export default {
 
   computed: {
     isMenuActive: get('ui/isMenuActive'),
-    isViewerActive: get('ui/isViewerActive'),
+    isViewerActive: get('viewer/isActive'),
 
     activeIconName () {
       return this.isMenuActive || this.isViewerActive ? 'cross' : 'menu'
@@ -39,7 +39,7 @@ export default {
   methods: {
     openMenu: call('ui/openMenu'),
     closeMenu: call('ui/closeMenu'),
-    closeViewer: call('ui/closeViewer'),
+    closeViewer: call('viewer/close'),
 
     toggleModalVisibility () {
       if (this.isViewerActive) {

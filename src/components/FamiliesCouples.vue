@@ -38,19 +38,45 @@
             :src="require('@/assets/images/familles.png')"
             class="families-couples__selection-illustration"
           >
-          <div class="families-couples__selection-gallery" />
+          <MiniGallery :photos="famillesPhotos" />
         </div>
         <div class="families-couples__selection-item">
           <img
             :src="require('@/assets/images/couples.png')"
             class="families-couples__selection-illustration"
           >
-          <div class="families-couples__selection-gallery" />
+          <MiniGallery :photos="couplesPhotos" />
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<script>
+import MiniGallery from '@/components/MiniGallery.vue'
+
+export default {
+  components: {
+    MiniGallery
+  },
+
+  computed: {
+    famillesPhotos () {
+      return ['https://ucarecdn.com/ae72cae4-bd29-4a7d-a3bd-40edad009014/',
+        'https://ucarecdn.com/d5c0211b-ca86-424e-87ab-80d7b48526d5/',
+        'https://ucarecdn.com/a0242e4d-0060-4494-8ea9-009f05e2d782/',
+        'https://ucarecdn.com/83c865a1-6ad7-41df-96a4-bd60d5db4e8c/']
+    },
+
+    couplesPhotos () {
+      return ['https://ucarecdn.com/7bd7fb65-2f8c-4168-9a36-7f508c25d099/',
+        'https://ucarecdn.com/173d0460-8da5-4c7c-a786-2d454e2913df/',
+        'https://ucarecdn.com/0a8b3c92-377a-447c-b0cf-9c5c9e22bb60/',
+        'https://ucarecdn.com/58ac5f4e-a51b-4a02-9622-ad8683c93e22/']
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_vars.scss';
@@ -197,12 +223,6 @@ blockquote {
   &--placeholder {
     background: rgba(black, 0.1);
   }
-}
-
-.families-couples__selection-gallery {
-  background: rgba(black, 0.1);
-  height: 200px;
-  width: 340px;
 }
 
 .families-couples__content {

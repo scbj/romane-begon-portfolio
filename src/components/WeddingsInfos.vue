@@ -13,7 +13,11 @@
             propre. L’émotion, l’amour, la douceur et la sensualité sont cœur de mon travail.
           </p>
         </div>
-        <div class="weddings-infos__hero-gallery" />
+        <div
+          class="weddings-infos__hero-gallery"
+          :style="{backgroundImage: heroGalleryPhoto}"
+          @click="onHeroGalleryClick"
+        />
       </div>
     </section>
     <section class="weddings-infos__flow">
@@ -47,7 +51,7 @@
           :key="plan.title"
           class="weddings-infos__plan-item"
         >
-          <div class="weddings-infos__plan-item-gallery" />
+          <MiniGallery :photos="plan.photos" />
           <h4 class="weddings-infos__plan-item-title" v-text="plan.title" />
           <p class="weddings-infos__plan-item-description" v-text="plan.description" />
         </div>
@@ -57,7 +61,13 @@
 </template>
 
 <script>
+import MiniGallery from '@/components/MiniGallery.vue'
+
 export default {
+  components: {
+    MiniGallery
+  },
+
   computed: {
     flowSteps () {
       return [
@@ -84,24 +94,64 @@ export default {
       ]
     },
 
+    heroGalleryPhoto () {
+      return 'url(https://ucarecdn.com/9d080d65-35d1-4598-b308-855bf3da0ff4/-/resize/400x/)'
+    },
+
     plans () {
       return [
         {
           title: 'EVJF',
           description: 'L’enterrement de vie de célibataire des jeunes mariés est une tradition idéale pour passer une journée ou un week-end hors du temps avec vos ami-e-s. Je peux vous accompagner ou m’insérer dans votre programme sous différents formats (reportage, photos de groupes fun ou posées) pour vous laisser des souvenirs qui respirent la bonne humeur.',
-          photos: []
+          photos: [
+            'https://ucarecdn.com/3198a70c-f01c-40cc-8b1a-892084fda058/',
+            'https://ucarecdn.com/efbcb6ec-745c-4dd6-baab-df043aaa8497/',
+            'https://ucarecdn.com/18332442-3e47-4bce-be19-fc3be90b1d8b/',
+            'https://ucarecdn.com/9d080d65-35d1-4598-b308-855bf3da0ff4/',
+            'https://ucarecdn.com/9b47703b-8b24-4d7c-ad17-6696c13634e4/',
+            'https://ucarecdn.com/ba08a1e3-40ce-4b88-9c74-243d958e9af3/',
+            'https://ucarecdn.com/a59f8117-f1dc-4dd3-b4a2-3377b429205f/',
+            'https://ucarecdn.com/5a8c54b9-d68b-4961-8960-3ab985fd37a2/'
+          ]
         },
         {
           title: 'Essayages de la robe',
           description: 'Ce moment particulier que vous allez partager avec votre meilleure amie, votre mère ou encore votre tante est teinté de beaucoup d’émotions. Je peux vous suivre lors de cette journée spéciale où vous allez partir à la rencontre de la robe qui vous procurera de la joie et de l’assurance. Celle qui vous accompagnera avec élégance tout au long d’un des plus beaux jours de votre vie.',
-          photos: []
+          photos: [
+            'https://ucarecdn.com/6abe4540-f818-4e83-972f-d38308624587/',
+            'https://ucarecdn.com/ace2765a-74cc-4701-81e6-2795b9f68c24/',
+            'https://ucarecdn.com/1f604433-f219-418c-8b63-3414852856a6/',
+            'https://ucarecdn.com/5113f2d1-0ed1-47cf-b666-65a9addeeb5d/',
+            'https://ucarecdn.com/ae72cae4-bd29-4a7d-a3bd-40edad009014/',
+            'https://ucarecdn.com/d5c0211b-ca86-424e-87ab-80d7b48526d5/',
+            'https://ucarecdn.com/a0242e4d-0060-4494-8ea9-009f05e2d782/',
+            'https://ucarecdn.com/83c865a1-6ad7-41df-96a4-bd60d5db4e8c/'
+          ]
         },
         {
           title: 'Séance d’engagements',
           description: 'Et si vous marquiez votre engagement au cours d’une belle séance photo dans un lieu qui vous ressemble et représente votre amour ? Que ce soit le lieu de votre rencontre ou un endroit que vous affectionnez particulièrement, je serai ravie de vous accompagner pour immortaliser votre complicité, et ceci avant ou après le grand jour. C’est aussi l’occasion d’apprendre à mieux vous connaître, de vous familiariser avec celle qui vous suivra tout au long de votre mariage mais aussi de vous donner assurance en votre photogénie. Oui, je vous garantis que vous allez vous aimer !',
-          photos: []
+          photos: [
+            'https://ucarecdn.com/c7c6ddc0-0695-471a-992d-ed9e80d867a4/',
+            'https://ucarecdn.com/42c0161a-3abf-40a1-8fa5-4b7131713daa/',
+            'https://ucarecdn.com/d1c29975-ff8f-4d68-8dc7-99ffdb1d0371/',
+            'https://ucarecdn.com/b06fb88c-0256-4cf7-8acc-6c90d0b8b9d7/',
+            'https://ucarecdn.com/7bd7fb65-2f8c-4168-9a36-7f508c25d099/',
+            'https://ucarecdn.com/173d0460-8da5-4c7c-a786-2d454e2913df/',
+            'https://ucarecdn.com/0a8b3c92-377a-447c-b0cf-9c5c9e22bb60/',
+            'https://ucarecdn.com/58ac5f4e-a51b-4a02-9622-ad8683c93e22/',
+            'https://ucarecdn.com/a62b96eb-46ab-49cd-9e26-5ba5b80a3562/',
+            'https://ucarecdn.com/4de6bcc3-013a-447c-ac26-dcee4871df81/',
+            'https://ucarecdn.com/de6f9e16-ba8f-408b-9426-a02777c509da/'
+          ]
         }
       ]
+    }
+  },
+
+  methods: {
+    onHeroGalleryClick () {
+      this.$router.push('galerie')
     }
   }
 }
@@ -216,10 +266,14 @@ blockquote {
 }
 
 .weddings-infos__hero-gallery {
+  border-radius: 0.222rem;
   background: rgba(black, 0.1);
+  background-size: cover;
+  background-repeat: no-repeat;
   flex: 0 1 400px;
   height: 400px;
   width: 400px;
+  cursor: pointer;
 }
 
 .weddings-infos__flow {
@@ -293,12 +347,6 @@ blockquote {
 .weddings-infos__plan-item {
   margin: 1rem;
   flex: 0 1;
-}
-
-.weddings-infos__plan-item-gallery {
-  background: rgba(black, 0.1);
-  height: 200px;
-  width: 340px;
 }
 
 .weddings-infos__plan-item-title {
