@@ -92,11 +92,11 @@ export default {
     backgroundImage () {
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
-        ? `x${size}`
-        : `${size}x`
+        ? `h=${size}`
+        : `w=${size}`
       return {
-        blur: `${this.prestation.backgroundImage}-/resize/200x/`,
-        responsive: `${this.prestation.backgroundImage}-/resize/${resizing}/`
+        blur: `${this.prestation.backgroundImage}?fm=webp&q=80&w=200`,
+        responsive: `${this.prestation.backgroundImage}?fm=webp&${resizing}`
       }
     },
 

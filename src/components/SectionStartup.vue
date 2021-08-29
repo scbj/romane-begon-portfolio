@@ -50,14 +50,14 @@ export default {
     },
 
     backgroundImage () {
-      const url = 'https://ucarecdn.com/3aab7c22-2672-4fe6-ba7f-dbd5bc5038bc/'
+      const url = 'https://images.ctfassets.net/hx81nuoo3d0f/6CddqeB6xNIEXAG0DnO9W4/99be0fb769f4f86479630880aa96e9fe/site67.jpg'
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
-        ? `x${size}`
-        : `${size}x`
+        ? `h=${size}`
+        : `w=${size}`
       return {
-        blur: `${url}-/resize/200x/`,
-        responsive: `${url}-/resize/${resizing}/`
+        blur: `${url}?fm=webp&q=80&w=200`,
+        responsive: `${url}?fm=webp&${resizing}`
       }
     },
 

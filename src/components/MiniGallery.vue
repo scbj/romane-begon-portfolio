@@ -31,7 +31,7 @@ export default {
     customProperties () {
       const photoUrl = this.photos[0]
       return {
-        '--background-image': `url(${photoUrl}-/resize/340x/)`
+        '--background-image': `url(${photoUrl}?fm=webp&w=340)`
       }
     }
   },

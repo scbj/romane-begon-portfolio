@@ -70,14 +70,14 @@ export default {
     },
 
     cssVariables () {
-      const bgImage = 'https://ucarecdn.com/928d894b-c200-47d9-a97a-52cd17a234c9/'
+      const bgImage = 'https://images.ctfassets.net/hx81nuoo3d0f/7h1a3H7oBFa467jS3gW0JN/4d47d7ecdd3fe58de5a27c1826f8e1d6/alix_44_.jpg'
       const bgPosition = '35%'
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
-        ? `x${size}`
-        : `${size}x`
+        ? `h=${size}`
+        : `w=${size}`
       return {
-        '--background-image': `url(${bgImage}-/resize/${resizing}/)`,
+        '--background-image': `url(${bgImage}?fm=webp&${resizing})`,
         '--background-position': bgPosition
       }
     }

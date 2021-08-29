@@ -1,5 +1,5 @@
 <template>
-  <div class="prestation-contact" :style="customProperties">
+  <div class="prestation-contact">
     <TextTitle class="prestation-contact__title" large>
       Contactez-moi
     </TextTitle>
@@ -31,13 +31,6 @@ export default {
   },
 
   computed: {
-    customProperties () {
-      const url = 'https://ucarecdn.com/a62b96eb-46ab-49cd-9e26-5ba5b80a3562/-/format/webp/-/quality/normal/'
-      return {
-        '--background-image': `url(${url})`
-      }
-    },
-
     messageSubjetOptions () {
       return {
         wedding: 'Mariage',

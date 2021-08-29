@@ -95,7 +95,7 @@ export default {
     },
 
     heroGalleryPhoto () {
-      return 'url(https://ucarecdn.com/9d080d65-35d1-4598-b308-855bf3da0ff4/-/resize/400x/)'
+      return 'url(https://images.ctfassets.net/hx81nuoo3d0f/6vIZLTeT2ZD4f1Jy8UuTVd/5453e0b29ebe77746a5be6fb239c2544/site79.JPG?fm=webp&w=400)'
     },
 
     plans () {
@@ -104,45 +104,34 @@ export default {
           title: 'EVJF',
           description: 'L’enterrement de vie de célibataire des jeunes mariés est une tradition idéale pour passer une journée ou un week-end hors du temps avec vos ami-e-s. Je peux vous accompagner ou m’insérer dans votre programme sous différents formats (reportage, photos de groupes fun ou posées) pour vous laisser des souvenirs qui respirent la bonne humeur.',
           photos: [
-            'https://ucarecdn.com/3198a70c-f01c-40cc-8b1a-892084fda058/',
-            'https://ucarecdn.com/efbcb6ec-745c-4dd6-baab-df043aaa8497/',
-            'https://ucarecdn.com/18332442-3e47-4bce-be19-fc3be90b1d8b/',
-            'https://ucarecdn.com/9d080d65-35d1-4598-b308-855bf3da0ff4/',
-            'https://ucarecdn.com/9b47703b-8b24-4d7c-ad17-6696c13634e4/',
-            'https://ucarecdn.com/ba08a1e3-40ce-4b88-9c74-243d958e9af3/',
-            'https://ucarecdn.com/a59f8117-f1dc-4dd3-b4a2-3377b429205f/',
-            'https://ucarecdn.com/5a8c54b9-d68b-4961-8960-3ab985fd37a2/'
+            'https://images.ctfassets.net/hx81nuoo3d0f/4zvLOgF14NA9wxJ5pgeUhJ/5744f06663118ea0c21c0a7187573fc2/site21.JPG',
+            'https://images.ctfassets.net/hx81nuoo3d0f/4pI2s6mofuh1w2AdkHo0gi/88854a7d2acc16e5436650325daa9449/site42.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/7C4jXogf68o1XH5Xb4hLMd/8ca714097d0ddc54c21ae14c2a9788be/site41.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/4ZXAxlmYkeglU6710ZxOF/b82b29202dbc23d9c3d57ee35303ad5c/site23.JPG',
+            'https://downloads.ctfassets.net/hx81nuoo3d0f/1rqLKnf0G3fz4GpiesbMDB/064a728c24c76937f2c994c6504f7612/site49.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/6fmW7Vy3em1gs1YQP3KnaF/67a6f11192ad1b214edb6e91be49e55c/site32.JPG',
+            'https://images.ctfassets.net/hx81nuoo3d0f/NsTCKdY5dL2rwLQkoNxdi/d7acc1db88f4779e57ed2ae899135925/site34.JPG'
           ]
         },
         {
           title: 'Essayages de la robe',
           description: 'Ce moment particulier que vous allez partager avec votre meilleure amie, votre mère ou encore votre tante est teinté de beaucoup d’émotions. Je peux vous suivre lors de cette journée spéciale où vous allez partir à la rencontre de la robe qui vous procurera de la joie et de l’assurance. Celle qui vous accompagnera avec élégance tout au long d’un des plus beaux jours de votre vie.',
           photos: [
-            'https://ucarecdn.com/6abe4540-f818-4e83-972f-d38308624587/',
-            'https://ucarecdn.com/ace2765a-74cc-4701-81e6-2795b9f68c24/',
-            'https://ucarecdn.com/1f604433-f219-418c-8b63-3414852856a6/',
-            'https://ucarecdn.com/5113f2d1-0ed1-47cf-b666-65a9addeeb5d/',
-            'https://ucarecdn.com/ae72cae4-bd29-4a7d-a3bd-40edad009014/',
-            'https://ucarecdn.com/d5c0211b-ca86-424e-87ab-80d7b48526d5/',
-            'https://ucarecdn.com/a0242e4d-0060-4494-8ea9-009f05e2d782/',
-            'https://ucarecdn.com/83c865a1-6ad7-41df-96a4-bd60d5db4e8c/'
+            'https://images.ctfassets.net/hx81nuoo3d0f/2T6Z7Xk138XXeFmEGK4qlt/57a19a95b48908382bd216472e4b0c71/site78.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/3IjERDD4X3oYf2M3JJ6nx5/b096da35a2be0c693f83ad5dafff3be5/site43.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/4XM6VkIWLDCBrMSCeDFQg6/b45d6b91f309d661c6ceffe6c96ef4b1/site54.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/4SgqZOvqQb9JeD6EdD4u2P/c60c9a1268dc54d13cc17237a344efca/site48.jpg'
           ]
         },
         {
           title: 'Séance d’engagements',
           description: 'Et si vous marquiez votre engagement au cours d’une belle séance photo dans un lieu qui vous ressemble et représente votre amour ? Que ce soit le lieu de votre rencontre ou un endroit que vous affectionnez particulièrement, je serai ravie de vous accompagner pour immortaliser votre complicité, et ceci avant ou après le grand jour. C’est aussi l’occasion d’apprendre à mieux vous connaître, de vous familiariser avec celle qui vous suivra tout au long de votre mariage mais aussi de vous donner assurance en votre photogénie. Oui, je vous garantis que vous allez vous aimer !',
           photos: [
-            'https://ucarecdn.com/c7c6ddc0-0695-471a-992d-ed9e80d867a4/',
-            'https://ucarecdn.com/42c0161a-3abf-40a1-8fa5-4b7131713daa/',
-            'https://ucarecdn.com/d1c29975-ff8f-4d68-8dc7-99ffdb1d0371/',
-            'https://ucarecdn.com/b06fb88c-0256-4cf7-8acc-6c90d0b8b9d7/',
-            'https://ucarecdn.com/7bd7fb65-2f8c-4168-9a36-7f508c25d099/',
-            'https://ucarecdn.com/173d0460-8da5-4c7c-a786-2d454e2913df/',
-            'https://ucarecdn.com/0a8b3c92-377a-447c-b0cf-9c5c9e22bb60/',
-            'https://ucarecdn.com/58ac5f4e-a51b-4a02-9622-ad8683c93e22/',
-            'https://ucarecdn.com/a62b96eb-46ab-49cd-9e26-5ba5b80a3562/',
-            'https://ucarecdn.com/4de6bcc3-013a-447c-ac26-dcee4871df81/',
-            'https://ucarecdn.com/de6f9e16-ba8f-408b-9426-a02777c509da/'
+            'https://images.ctfassets.net/hx81nuoo3d0f/eBYy8nuCZ7lQ1AggnDjRq/93d266c60be00e575554a860335c210f/site59.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/2sGrESIrCA5UYUqvmLcz4k/dae4a703709cf2e8724b64a96decfe6b/site56.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/5nOx4u5oLAMPzcz7Lqh6Po/0191de92bf7ce307eb36117e1c59e377/site65.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/28QwMyrCEOT7L7qzeLTrwh/2d448190f433ed0dd16e43563c80fa33/site70.jpg',
+            'https://images.ctfassets.net/hx81nuoo3d0f/2zficqcQQohjhdl7jnJmVM/e40ca74b582ce5e1725a8873ee63a079/site75.jpg'
           ]
         }
       ]
@@ -268,6 +257,7 @@ blockquote {
 .weddings-infos__hero-gallery {
   border-radius: 0.222rem;
   background: rgba(black, 0.1);
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   flex: 0 1 400px;
