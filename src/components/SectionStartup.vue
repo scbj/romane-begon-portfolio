@@ -12,19 +12,19 @@
     <ParallaxLayer class="section-startup__content" depth="base">
       <WebsiteTitle size="large" />
       <div class="section-startup__content-citation">
-        <span class="sentence-1">« {{ sentence.text }}. »</span>
-        <span class="sentence-2">{{ sentence.author }}</span>
+        <span class="sentence-1">« {{ sentenceText }}. »</span>
+        <span class="sentence-2">{{ sentenceAuthor }}</span>
       </div>
     </ParallaxLayer>
   </ParallaxGroup>
 </template>
 
 <script>
+import { get } from 'vuex-pathify'
+
 import ParallaxGroup from '@/components/parallax/ParallaxGroup'
 import ParallaxLayer from '@/components/parallax/ParallaxLayer'
 import WebsiteTitle from '@/components/WebsiteTitle'
-
-import data from '@/assets/data/home.json'
 
 let isBackgroundImagePrefetch = false
 
@@ -42,12 +42,8 @@ export default {
   },
 
   computed: {
-    sentence () {
-      return {
-        text: data.sentence,
-        author: data.author
-      }
-    },
+    sentenceText: get('home/data@fields.sentence'),
+    sentenceAuthor: get('home/data@fields.author'),
 
     backgroundImage () {
       const url = 'https://images.ctfassets.net/hx81nuoo3d0f/6CddqeB6xNIEXAG0DnO9W4/99be0fb769f4f86479630880aa96e9fe/site67.jpg'

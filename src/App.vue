@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { get, sync } from 'vuex-pathify'
+import { dispatch, get, sync } from 'vuex-pathify'
 
 import gsap, { Expo } from 'gsap'
 
@@ -45,6 +45,11 @@ export default {
     isMenuActive: get('ui/isMenuActive'),
     isMenuTransitionRunning: sync('ui/isMenuTransitionRunning'),
     isViewerActive: get('viewer/isActive')
+  },
+
+  created () {
+    dispatch('home/load')
+    dispatch('photos/load')
   },
 
   mounted () {

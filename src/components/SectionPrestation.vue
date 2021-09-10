@@ -83,20 +83,22 @@ export default {
       const backgroundImageUrl = this.isBackgroundImageReady
         ? this.backgroundImage.responsive
         : this.backgroundImage.blur
+      const backgroundImageOffset = this.prestation.backgroundImageOffset ?? 63
       return {
         '--background-image': `url(${backgroundImageUrl})`,
-        '--background-position': this.prestation.backgroundPosition ?? '63%'
+        '--background-position': `${backgroundImageOffset}%`
       }
     },
 
     backgroundImage () {
+      const url = this.prestation.backgroundImage.fields.file.url
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
         ? `h=${size}`
         : `w=${size}`
       return {
-        blur: `${this.prestation.backgroundImage}?fm=webp&q=80&w=200`,
-        responsive: `${this.prestation.backgroundImage}?fm=webp&${resizing}`
+        blur: `${url}?fm=webp&q=80&w=200`,
+        responsive: `${url}?fm=webp&${resizing}`
       }
     },
 
