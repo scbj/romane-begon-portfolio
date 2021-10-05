@@ -1,4 +1,3 @@
-import { prestations } from '@/assets/data/home.json'
 import slugify from 'slugify'
 
 const routes = [
@@ -44,8 +43,5 @@ export function slugifyPrestationParam (value) {
     strict: true
   })
 }
-
-export const prestationsRoutes = prestations
-  .map(prestation => slugifyPrestationParam(prestation.title))
 
 export default routes

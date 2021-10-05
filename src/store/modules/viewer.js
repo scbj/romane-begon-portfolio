@@ -48,9 +48,9 @@ export const actions = {
     commit('SET_PENDING', true)
     const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
     const resizing = window.innerHeight > window.innerWidth
-      ? `x${size}`
-      : `${size}x`
-    const optimizedPhoto = `${photo}-/format/webp/-/quality/normal/-/resize/${resizing}/`
+      ? `h=${size}`
+      : `w=${size}`
+    const optimizedPhoto = `${photo}?fm=webp&${resizing}`
     await preload(optimizedPhoto)
     commit('SET_PENDING', false)
     commit('SET_ACTIVE_INDEX', index)

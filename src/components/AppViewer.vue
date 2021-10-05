@@ -120,7 +120,7 @@ export default {
     },
 
     image (src, dimension) {
-      return `${src}/-/resize/${dimension}x/`
+      return `${src}?fm=webp&w=${dimension}`
     }
   }
 }

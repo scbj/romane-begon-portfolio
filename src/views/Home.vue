@@ -1,11 +1,11 @@
 <template>
   <DefaultLayout>
     <SectionStartup @ready="onStartupSectionReady" />
-    <template v-if="isReady">
+    <template v-if="isReady && prestations.length > 0">
       <template v-for="(prestation, index) in prestations">
         <SectionPrestation
           :key="index"
-          :prestation="prestation"
+          :prestation="prestation.fields"
           :progress-number="index + 2"
         />
       </template>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { get } from 'vuex-pathify'
+
 import DefaultLayout from '@/layouts/DefaultLayout'
 
 import SectionAbout from '@/components/SectionAbout'
@@ -24,8 +26,6 @@ import SectionClientArea from '@/components/SectionClientArea'
 import SectionContact from '@/components/SectionContact'
 import SectionPrestation from '@/components/SectionPrestation'
 import SectionStartup from '@/components/SectionStartup'
-
-import data from '@/assets/data/home.json'
 
 export default {
   components: {
@@ -49,10 +49,9 @@ export default {
       // hasHashChanged: false
     }
   },
+
   computed: {
-    prestations () {
-      return data.prestations
-    }
+    prestations: get('home/sortedPrestations')
   },
 
   // watch: {
