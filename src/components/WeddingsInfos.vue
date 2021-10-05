@@ -299,6 +299,7 @@ blockquote {
   justify-self: center;
   height: $size;
   width: $size;
+  max-width: 200px;
 
   &--placeholder {
     background: rgba(black, 0.1);

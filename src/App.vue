@@ -48,8 +48,7 @@ export default {
   },
 
   created () {
-    dispatch('home/load')
-    dispatch('photos/load')
+    dispatch('contentful/loadData')
   },
 
   mounted () {
