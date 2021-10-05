@@ -4,7 +4,16 @@ export const state = {}
 
 export const getters = {
   data (state, getters, rootState) {
-    return rootState.contentful.entries.find(item => item.sys.contentType.sys.id === 'home')
+    const data = rootState.contentful.entries.find(item => item.sys.contentType.sys.id === 'home')
+
+    if (data) {
+      const asset = rootState.contentful.assets
+        .find(asset => asset.sys.id === data.fields.startupBackgroundImage.sys.id)
+      console.log('🚀 ~ file: home.js ~ line 12 ~ data ~ data', data)
+      data.fields.startupBackgroundImage = asset
+    }
+
+    return data
   },
 
   prestations (state, getters, rootState, rootGetters) {

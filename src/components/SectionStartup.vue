@@ -11,7 +11,7 @@
 
     <ParallaxLayer class="section-startup__content" depth="base">
       <WebsiteTitle size="large" />
-      <div class="section-startup__content-citation">
+      <div v-if="sentenceText && sentenceAuthor" class="section-startup__content-citation">
         <span class="sentence-1">« {{ sentenceText }}. »</span>
         <span class="sentence-2">{{ sentenceAuthor }}</span>
       </div>
@@ -44,9 +44,12 @@ export default {
   computed: {
     sentenceText: get('home/data@fields.sentence'),
     sentenceAuthor: get('home/data@fields.author'),
+    startupBackgroundImage: get('home/data@fields.startupBackgroundImage'),
 
     backgroundImage () {
-      const url = 'https://images.ctfassets.net/hx81nuoo3d0f/6CddqeB6xNIEXAG0DnO9W4/99be0fb769f4f86479630880aa96e9fe/site67.jpg'
+      if (!this.startupBackgroundImage) return {}
+
+      const url = this.startupBackgroundImage.fields.file.url
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
         ? `h=${size}`
