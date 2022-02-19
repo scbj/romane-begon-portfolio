@@ -15,8 +15,12 @@ export const mutations = make.mutations(state)
 export const actions = {
   async loadLumysGalleries ({ commit }) {
     try {
-      const response = await fetch('https://lumys.photo/api/widget?apiKey=2a6tjhvypa0cz50h')
+      const response = await fetch('https://romanebegon.lumys.photo/api/minisite/galleriesAndCategories', {
+        mode: 'no-cors'
+      })
       const { message, galleries } = await response.json()
+      console.log('🚀 ~ file: client-area.js ~ line 20 ~ loadLumysGalleries ~ message', message)
+      console.log('🚀 ~ file: client-area.js ~ line 20 ~ loadLumysGalleries ~ galleries', galleries)
 
       if (message === 'ok' && galleries.length) {
         const createGallery = item => ({
