@@ -11,20 +11,20 @@
 
     <ParallaxLayer class="section-startup__content" depth="base">
       <WebsiteTitle size="large" />
-      <div class="section-startup__content-citation">
-        <span class="sentence-1">« {{ sentence.text }}. »</span>
-        <span class="sentence-2">{{ sentence.author }}</span>
+      <div v-if="sentenceText && sentenceAuthor" class="section-startup__content-citation">
+        <span class="sentence-1">« {{ sentenceText }}. »</span>
+        <span class="sentence-2">{{ sentenceAuthor }}</span>
       </div>
     </ParallaxLayer>
   </ParallaxGroup>
 </template>
 
 <script>
+import { get } from 'vuex-pathify'
+
 import ParallaxGroup from '@/components/parallax/ParallaxGroup'
 import ParallaxLayer from '@/components/parallax/ParallaxLayer'
 import WebsiteTitle from '@/components/WebsiteTitle'
-
-import data from '@/assets/data/home.json'
 
 let isBackgroundImagePrefetch = false
 
@@ -42,22 +42,21 @@ export default {
   },
 
   computed: {
-    sentence () {
-      return {
-        text: data.sentence,
-        author: data.author
-      }
-    },
+    sentenceText: get('home/data@fields.sentence'),
+    sentenceAuthor: get('home/data@fields.author'),
+    startupBackgroundImage: get('home/data@fields.startupBackgroundImage'),
 
     backgroundImage () {
-      const url = 'https://ucarecdn.com/3aab7c22-2672-4fe6-ba7f-dbd5bc5038bc/'
+      if (!this.startupBackgroundImage) return {}
+
+      const url = this.startupBackgroundImage.fields.file.url
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
-        ? `x${size}`
-        : `${size}x`
+        ? `h=${size}`
+        : `w=${size}`
       return {
-        blur: `${url}-/resize/200x/`,
-        responsive: `${url}-/resize/${resizing}/`
+        blur: `${url}?fm=webp&q=80&w=200`,
+        responsive: `${url}?fm=webp&${resizing}`
       }
     },
 

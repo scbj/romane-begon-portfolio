@@ -28,7 +28,7 @@ export const actions = {
         commit('SET_GALLERIES', galleries.map(createGallery))
       }
     } catch (error) {
-
+      // TODO: Send mail to a mail adress like sachabejaud.prevent.client.error@gmail.com to adress the issue before the client rise a problem
     }
   }
 }

@@ -34,3 +34,13 @@
     }
   }
 }
+
+@mixin button-black {
+  font-family: "Orpheus Pro", serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: white;
+  border-radius: 0.14em;
+  background: #110703;
+  padding: 0.7em 1.8em;
+}

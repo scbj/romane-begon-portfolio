@@ -4,6 +4,14 @@ const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Mode = require('frontmatter-markdown-loader/mode')
 
 const configuration = {
+  devServer: {
+    proxy: {
+      '/.netlify': {
+        target: 'http://localhost:9000',
+        pathRewrite: { '^/.netlify/functions': '' }
+      }
+    }
+  },
   chainWebpack: config => {
     config.module
       .rule('markdown')
@@ -31,14 +39,17 @@ if (process.env.NODE_ENV === 'production') {
           '/',
           '/espace-client',
           '/a-propos',
-          '/contact',
           '/mariages',
           '/mariages/galerie',
           '/portraits',
           '/portraits/galerie',
           '/familles-couples',
           '/familles-couples/galerie'
-        ]
+        ],
+        renderer: new PrerenderSPAPlugin.PuppeteerRenderer({
+          headless: true,
+          maxConcurrentRoutes: 1
+        })
       })
     ]
   }

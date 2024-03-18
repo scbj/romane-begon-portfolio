@@ -9,12 +9,13 @@
     >
       <AppMenu v-show="isMenuActive" />
     </transition>
+    <ContactModal v-show="isContactModalOpened" />
     <AppButton />
   </div>
 </template>
 
 <script>
-import { get, sync } from 'vuex-pathify'
+import { dispatch, get, sync } from 'vuex-pathify'
 
 import gsap, { Expo } from 'gsap'
 
@@ -25,7 +26,8 @@ export default {
   components: {
     AppViewer: () => import(/* webpackPrefetch: true */ '@/components/AppViewer.vue'),
     AppMenu,
-    AppButton
+    AppButton,
+    ContactModal: () => import(/* webpackPrefetch: true */ '@/components/ContactModal.vue')
   },
 
   data () {
@@ -39,9 +41,14 @@ export default {
   },
 
   computed: {
+    isContactModalOpened: get('contact/isModalOpened'),
     isMenuActive: get('ui/isMenuActive'),
     isMenuTransitionRunning: sync('ui/isMenuTransitionRunning'),
-    isViewerActive: get('ui/isViewerActive')
+    isViewerActive: get('viewer/isActive')
+  },
+
+  created () {
+    dispatch('contentful/loadData')
   },
 
   mounted () {

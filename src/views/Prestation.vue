@@ -50,30 +50,21 @@ export default {
     ThemeStyle
   },
 
+  beforeRouteUpdate: routeGuard,
+  beforeRouteEnter: routeGuard,
+
   computed: {
     themeMode: get('ui/theme@mode'),
 
     backgroundColor () {
       return this.themeMode === 'dark' ? '#0e0e0e' : 'white'
     }
-  },
-
-  beforeRouteUpdate: routeGuard,
-  beforeRouteEnter: routeGuard
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@/assets/styles/_animations.scss';
-
-.prestation {
-  display: flex;
-  flex-direction: column;
-}
-
-.prestation__header {
-  align-self: flex-end;
-}
 
 .prestation_navigation-link {
   color: var(--text-color);

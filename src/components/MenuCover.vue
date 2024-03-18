@@ -2,7 +2,7 @@
   <div class="menu-cover">
     <img
       class="menu-cover__picture"
-      src="https://ucarecdn.com/4575fea1-c507-4299-8d4c-42e1f01419e2/-/preview/photo-5-2.png"
+      src="https://downloads.ctfassets.net/hx81nuoo3d0f/1hsu2oW5rpNkJSHO41Z759/fbafaf045dd82f14a6f6aa95e6c2f809/photo-5-2.png?fm=webp&w=1920"
       alt="Boat"
     >
   </div>

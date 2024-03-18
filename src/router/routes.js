@@ -1,7 +1,5 @@
 import slugify from 'slugify'
 
-import { prestations } from '@/assets/data/home.json'
-
 const routes = [
   {
     path: '/',
@@ -17,11 +15,6 @@ const routes = [
     path: '/a-propos',
     name: 'about',
     component: () => import('@/views/About.vue')
-  },
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('@/views/Contact.vue')
   },
   {
     path: '/:prestation',
@@ -50,8 +43,5 @@ export function slugifyPrestationParam (value) {
     strict: true
   })
 }
-
-export const prestationsRoutes = prestations
-  .map(prestation => slugifyPrestationParam(prestation.title))
 
 export default routes

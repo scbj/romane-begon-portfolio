@@ -11,7 +11,7 @@
     </ParallaxLayer>
 
     <ParallaxLayer class="section-prestation__content" depth="base">
-      <PrestationCounter :value="progressNumber" />
+      <SectionCounter :value="progressNumber" />
       <TextTitle
         ref="title"
         extra-large
@@ -23,6 +23,7 @@
         {{ prestation.description }}
       </TextParagraph>
       <BaseButton
+        ref="button"
         class="section-prestation__browse-button"
         :route="linkRoute"
         color="white"
@@ -38,12 +39,13 @@
 
 <script>
 import TextCharming from '@/animations/TextCharming'
+import Sparkle from '@/animations/Sparkle'
 
 import { slugifyPrestationParam } from '@/router/routes'
 
 import ParallaxGroup from '@/components/parallax/ParallaxGroup'
 import ParallaxLayer from '@/components/parallax/ParallaxLayer'
-import PrestationCounter from '@/components/PrestationCounter'
+import SectionCounter from '@/components/SectionCounter'
 import TextParagraph from '@/components/TextParagraph'
 import TextTitle from '@/components/TextTitle'
 
@@ -51,7 +53,7 @@ export default {
   components: {
     ParallaxGroup,
     ParallaxLayer,
-    PrestationCounter,
+    SectionCounter,
     TextParagraph,
     TextTitle
   },
@@ -70,6 +72,7 @@ export default {
   data () {
     return {
       titleAnimationRunning: false,
+      buttonEffect: null,
       textEffect: null,
       isBackgroundImageReady: false
     }
@@ -80,20 +83,22 @@ export default {
       const backgroundImageUrl = this.isBackgroundImageReady
         ? this.backgroundImage.responsive
         : this.backgroundImage.blur
+      const backgroundImageOffset = this.prestation.backgroundImageOffset ?? 63
       return {
         '--background-image': `url(${backgroundImageUrl})`,
-        '--background-position': this.prestation.backgroundPosition ?? '63%'
+        '--background-position': `${backgroundImageOffset}%`
       }
     },
 
     backgroundImage () {
+      const url = this.prestation.backgroundImage.fields.file.url
       const size = Math.min(Math.max(window.innerHeight, window.innerWidth), 3000)
       const resizing = window.innerHeight > window.innerWidth
-        ? `x${size}`
-        : `${size}x`
+        ? `h=${size}`
+        : `w=${size}`
       return {
-        blur: `${this.prestation.backgroundImage}-/resize/200x/`,
-        responsive: `${this.prestation.backgroundImage}-/resize/${resizing}/`
+        blur: `${url}?fm=webp&q=80&w=200`,
+        responsive: `${url}?fm=webp&${resizing}`
       }
     },
 
@@ -127,6 +132,14 @@ export default {
     if (!hasWhitespace) {
       this.textEffect = new TextCharming(this.$refs.title)
     }
+    this.buttonEffect = new Sparkle(this.$refs.button.$el)
+    setTimeout(() => {
+      this.buttonEffect.sparkleh()
+    }, 1000)
+  },
+
+  beforeDestroy () {
+    this.buttonEffect.extinguish()
   },
 
   methods: {
@@ -230,6 +243,7 @@ export default {
 }
 
 .section-prestation__browse-button {
+  position: relative;
   margin-top: 2.722rem;
 
   span {

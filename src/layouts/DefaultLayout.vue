@@ -40,7 +40,6 @@
 
 <script>
 import { sync } from 'vuex-pathify'
-import { throttle } from '@bit/scbj.utils.throttle'
 
 import ParallaxContainer from '@/components/parallax/ParallaxContainer'
 import HomeProgressBar from '@/components/HomeProgressBar'
@@ -49,6 +48,7 @@ import ThemeStyle from '@/components/ThemeStyle'
 import WebsiteTitle from '@/components/WebsiteTitle'
 
 import responsive from '@/mixins/responsive'
+import { throttle } from '@/utils/throttle'
 
 export default {
   components: {
@@ -186,6 +186,17 @@ export default {
   letter-spacing: 0.28em;
   line-height: 2.667em;
   color: var(--text-color);
+  display: inline-block;
   opacity: .87;
+  animation: pop 4s ease-out infinite;
+}
+
+@keyframes pop {
+  0%, 75%, 85% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(8px) scale(0.98);
+  }
 }
 </style>
